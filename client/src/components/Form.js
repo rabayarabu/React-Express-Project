@@ -1,23 +1,45 @@
 import React, { useEffect, useState } from 'react'
 
+
 function Form() {
-    const Values = { name: "", email: "", password: "" }
-    const [formValue, setFormValue] = useState(Values);
+    const Value = { name: "", email: "", password: "" }
+    const [formValue, setFormValue] = useState(Value);
     const [formErrors, setFormErrors] = useState({});
+    useEffect(() => {
+
+    }, [])
     const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormValue({...formValue,[name]: value});
+        const { name, value } = e.target;
+        setFormValue({ ...formValue, [name]: value });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        setFormErrors(validate(formValue));
+        setFormErrors(validate(formValue))
+        fetch("http://localhost:5000/api", {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, method: "POST", body: { "email": formValue.email, "password": formValue.password }
+        }).then(
+            response => response.json()
+        ).then(
+            data => {
+                setFormValue(data)
+            }
+        )
     };
     const validate = (values) => {
 
     }
     return (
         <div className="container">
-            <pre>{JSON.stringify(formValue, undefined, 2)}</pre>
+            {(typeof Value.Values === 'undefined') ? (
+                <p>Buffering...</p>
+            ) : (Value.Values.map((Value, i) => (
+                <p key={i}>{Value}</p>
+            )
+            ))}
+            {/* <pre>{JSON.stringify(formValue, undefined, 2)}</pre> */}
             <form onSubmit={handleSubmit}>
                 <h1>Login Form</h1>
                 <div className="ui divider"></div>
