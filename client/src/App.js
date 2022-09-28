@@ -21,7 +21,7 @@ function App(){
       {(typeof name.names=== 'undefined') ? (
         <p>Buffering...</p>
       ) : (name.names.map((name, i) => (
-        <p>{name}</p>
+        <p key={i}>{name}</p>
       )
       ))}
     </div>
