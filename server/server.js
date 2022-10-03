@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 var corOptions = {
   origin: "http://localhost:3000"
 };
-
+app.use(cors({origin: "*",}))
 app.use(cors(corOptions))
 app.get("/", (req, res) => {
   console.log(JSON.stringify(req.body))
