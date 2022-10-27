@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react'
 
 
-function Form() {
-    const value = { name: "", email: "", password: "" }
-    const [formvalues, setFormvalues] = useState(value);
-    const [formErrors, setFormErrors] = useState({});
-    useEffect(() => {
 
-    }, [])
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormvalues({ ...formvalues, [name]: value });
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setFormErrors(validate(formvalues))
-        fetch("http://localhost:5000/api", {
+function Form() {
+    const value = { 
+        name: "", 
+        email: "",
+        password: "",redirect: false,
+        setHeaders: function (res, path, stat) {
+          res.set('x-timestamp', Date.now())
+        } 
+    }
+    const [formvalues, setFormvalues] = useState(value);
+    useEffect(() => {
+        fetch("http://localhost:8000/login", {
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Accept': 'text/json',
+                'Content-Type': 'text/json'
             }, method: "POST", body: { "email": formvalues.email, "password": formvalues.password }
         }).then(
             response => response.json()
@@ -26,21 +24,39 @@ function Form() {
             data => {
                 setFormvalues(data)
             }
-        )
-    };
-    const validate = (values) => {
+        ).catch(error => {
+            console.log('error occured');
+        })
 
-    }
+    }, [])
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        const { name, value } = e.target;
+        setFormvalues({ ...formvalues, [name]: value });
+        
+    };
+    const handleSubmit = (e) => {
+       
+        console.log(e.target.value);
+        console.log('form is submitted');
+        console.log(formvalues.name, formvalues.email, formvalues.password);
+        e.preventDefault();
+        const { name, value } = e.target;
+        setFormvalues({ ...formvalues, [name]: value });
+        
+    };
+    
+    
     return (
         <div className="container">
            
             {/* <pre>{JSON.stringify(formvalues, undefined, 2)}</pre> */}
             <form onSubmit={handleSubmit}>
-                <h1>Login Form</h1>
+                <h1 class="title">Login Form</h1>
                 <div className="ui divider"></div>
                 <div className="ui form">
                     <div className="field">
-                        <label>Name</label>
+                        <label>Name   </label>
                         <input type="text"
                             name="name"
                             placeholder="name"
@@ -49,7 +65,7 @@ function Form() {
                         />
                     </div>
                     <div className="field">
-                        <label>Email</label>
+                        <label>Email </label>
                         <input type="text"
                             name="email"
                             placeholder="email"
@@ -58,7 +74,7 @@ function Form() {
                         />
                     </div>
                     <div className="field">
-                        <label>Password</label>
+                        <label>Password </label>
                         <input type="text"
                             name="password"
                             placeholder="password"
@@ -66,10 +82,11 @@ function Form() {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className="fluid ui button blue">Login</button>
+                    <button onSubmit={handleSubmit} className="fluid ui button blue" >Login</button>
                 </div>
 
             </form>
+            <div>{}</div>
 
         </div>
     )

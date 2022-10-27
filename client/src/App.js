@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import '././components/styles.css'
 // import Practice from './components/Practice'
 import Form from './components/Form'
 
