@@ -48,47 +48,54 @@ function Form() {
     
     
     return (
-        <div className="container">
+        <body>
+            
+            <div className="container">
            
-            {/* <pre>{JSON.stringify(formvalues, undefined, 2)}</pre> */}
-            <form onSubmit={handleSubmit}>
-                <h1 class="title">Login Form</h1>
-                <div className="ui divider"></div>
-                <div className="ui form">
-                    <div className="field">
-                        <label>Name   </label>
-                        <input type="text"
-                            name="name"
-                            placeholder="name"
-                            values={formvalues.name}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="field">
-                        <label>Email </label>
-                        <input type="text"
-                            name="email"
-                            placeholder="email"
-                            values={formvalues.email}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="field">
-                        <label>Password </label>
-                        <input type="text"
-                            name="password"
-                            placeholder="password"
-                            values={formvalues.password}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <button onSubmit={handleSubmit} className="fluid ui button blue" >Login</button>
-                </div>
+           {/* <pre>{JSON.stringify(formvalues, undefined, 2)}</pre> */}
+           <form onSubmit={handleSubmit}>
+               <h1 class="title">Login Form</h1>
+               <div className="ui divider"></div>
+               <div className="ui form">
+                   <div className="field">
+                       <label>Name   </label>
+                       <input type="text"
+                           name="name"
+                           placeholder="name"
+                           values={formvalues.name}
+                           onChange={handleChange}
+                       />
+                   </div>
+                   <div className="field">
+                       <label>Email </label>
+                       <input type="text"
+                           name="email"
+                           placeholder="email"
+                           values={formvalues.email}
+                           onChange={handleChange}
+                       />
+                   </div>
+                   <div className="field">
+                       <label>Password </label>
+                       <input type="text"
+                           name="password"
+                           placeholder="password"
+                           values={formvalues.password}
+                           onChange={handleChange}
+                       />
+                   </div>
+                   <div className='d-grid'>
+                   <button  type="button" className="btn btn-primary btn-block btn-login" onSubmit={handleSubmit}>Login</button>
+                   </div>
+               </div>
 
-            </form>
-            <div>{}</div>
+           </form>
+           <div>{}</div>
 
-        </div>
+       </div>
+        </body>
+        
+        
     )
 }
 
