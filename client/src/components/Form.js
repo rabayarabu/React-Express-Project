@@ -50,7 +50,7 @@ function Form() {
     return (
         <body>
             
-            <div className="container">
+         <div>
            
            {/* <pre>{JSON.stringify(formvalues, undefined, 2)}</pre> */}
            <form onSubmit={handleSubmit}>
@@ -90,7 +90,6 @@ function Form() {
                </div>
 
            </form>
-           <div>{}</div>
 
        </div>
         </body>

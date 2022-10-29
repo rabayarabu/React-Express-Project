@@ -1,44 +1,29 @@
-.container{
+form{
+    
     background-color: rgb(243, 243, 174);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    margin: 40px 60px;
-    padding: 0;
+    /* margin: 40px 45px;
+    padding: 0; */
     border-radius: 5px;
     font-size: 1rem;
-    line-height: 1.5;
+    /* line-height: 2; */
     text-align: center;
     color: #333;
-}
-.title{
-    font-size: 4rem;
-    text-align: center;
+    height: 50%;
+    width: 40%;
+    display:contents;
 }
 
-
-input{
-    width: 50%;
-    text-align: left;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    box-sizing: border-box;
-    vertical-align: auto;
-}
 h1{
+    font-size: 3rem;
     text-align: center;
+    padding: 15px 20px;
+    margin: 30px 35px;
 }
 
-.ui form{
-    margin: auto;
-
-}
 .field{
-    size: large;
-}
-.d-grid{
-    background-color: #333;
+    
+    text-align: center;
 }
 
 .btn-login{
